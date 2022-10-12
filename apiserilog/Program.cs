@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 Log.Logger = new LoggerConfiguration()
-                 .WriteTo.Console()
+                 .ReadFrom.Configuration(builder.Configuration)
                  .CreateLogger();
 
 builder.Host.UseSerilog();

@@ -1,3 +1,5 @@
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+Log.Logger = new LoggerConfiguration()
+                 .WriteTo.Console()
+                 .CreateLogger();
+
+builder.Host.UseSerilog();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -16,10 +23,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSerilogRequestLogging();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
+Log.Information("Appication has been started");
+
 app.Run();
+

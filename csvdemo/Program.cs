@@ -10,9 +10,18 @@ using (var reader = new StreamReader("users.csv"))
         using(var dr = new CsvDataReader(csv))
         {
             var dt =  new DataTable();
+            dt.Columns.Add("Username" , typeof(string)); 
+            dt.Columns.Add("Login email" , typeof(string)); 
+            dt.Columns.Add("Identifier" , typeof(short)); 
+            dt.Columns.Add("First name" , typeof(string)); 
+            dt.Columns.Add("Last name" , typeof(string));   
+
             dt.Load(dr);
 
-            Console.WriteLine($"{dt.Rows[0][0]}");
+           for (int i = 0; i < dt.Rows.Count; i++)
+           {
+                Console.WriteLine($"{dt.Rows[i][0]} - {dt.Rows[i][2]}");
+           }
         }
     }
 }

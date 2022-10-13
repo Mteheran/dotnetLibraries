@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="grades.csv" />
+    <Content Include="users.csv" />
   </ItemGroup>
 
 </Project>

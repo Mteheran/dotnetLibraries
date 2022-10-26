@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 var newPerson = new Person() { Name= "Maria", LastName = "Lopez", Age=20};
 
-var configMapper = new MapperConfiguration(cfg=> cfg.CreateMap<Person, User>());
+var configMapper = new MapperConfiguration(cfg=> cfg.CreateMap<Person, User>()
+                                                    .ForMember(dest=> dest.UserName, opt=> opt.MapFrom(src=> src.Name + src.LastName)));
 var mapper = new Mapper(configMapper);
 
 var newUser = mapper.Map<User>(newPerson);

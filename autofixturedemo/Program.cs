@@ -2,7 +2,9 @@
 
 Fixture fixture = new Fixture();
 
-var user = fixture.Create<User>();
+var user = fixture.Build<User>()
+        .With(p=> p.DateCreated, DateTime.Now.AddDays(-60))
+        .Without(p=> p.Email).Create();
 
 Console.WriteLine($"Name: {user.Name}");
 Console.WriteLine($"Email: {user.Email}");

@@ -1,33 +1,35 @@
-﻿List<BookChapter> harryPotter = new List<BookChapter>();
+﻿using Humanizer;
+
+List<BookChapter> harryPotter = new List<BookChapter>();
 harryPotter.Add(new BookChapter()
 {
-    ChapterNumber = 1,
+    ChapterNumber = "I",
     Title = "El Niño que Vivió"
 });
 harryPotter.Add(new BookChapter()
 {
-    ChapterNumber = 2,
+    ChapterNumber = "II",
     Title = "El Vidrio que se Desvaneció"
 });
 harryPotter.Add(new BookChapter()
 {
-    ChapterNumber = 3,
+    ChapterNumber = "III",
     Title = "Las Cartas de Nadie"
 });
 harryPotter.Add(new BookChapter()
 {
-    ChapterNumber = 4,
+    ChapterNumber = "IV",
     Title = "El Guardián de las Llaves"
 });
 
 foreach(var item in harryPotter)
 {
-    Console.WriteLine($"{item.ChapterNumber}. {item.Title}");
+    Console.WriteLine($"{item.ChapterNumber.FromRoman()}. {item.Title}");
 }
 
 
 public class BookChapter 
 {
-    public int ChapterNumber {get;set;}
+    public string ChapterNumber {get;set;}
     public string Title {get;set;}
 }
